@@ -3,15 +3,17 @@ package ecc
 import (
 	"crypto/rand"
 	"errors"
+	"fmt"
 	"io"
 
-	"github.com/RadicalApp/complete"
 	"github.com/RadicalApp/libsignal-protocol-go/logger"
 	"golang.org/x/crypto/curve25519"
 )
 
 // DjbType is the Diffie-Hellman curve type (curve25519) created by D. J. Bernstein.
 const DjbType = 0x05
+
+var ErrBadKeyType = errors.New("bad key type")
 
 // DecodePoint will take the given bytes and offset and return an ECPublicKeyable object.
 // This is used to check the byte at the given offset in the byte array for a special
@@ -25,7 +27,7 @@ func DecodePoint(bytes []byte, offset int) (ECPublicKeyable, error) {
 		copy(keyBytes[:], bytes[offset+1:])
 		return NewDjbECPublicKey(keyBytes), nil
 	default:
-		return nil, errors.New("Bad key type: " + string(keyType))
+		return nil, fmt.Errorf("%w %d", ErrBadKeyType, keyType)
 	}
 }
 
@@ -89,19 +91,6 @@ func VerifySignature(signingKey ECPublicKeyable, message []byte, signature [64]b
 	return valid
 }
 
-// VerifySignatureAsync verifies that a message was signed with the given key asyncronously.
-func VerifySignatureAsync(signingKey ECPublicKeyable, message []byte, signature [64]byte, completion complete.Completionable) {
-	go func() {
-		r := VerifySignature(signingKey, message, signature)
-		if r == false {
-			completion.OnFailure("Signature invalid")
-			return
-		}
-		result := complete.NewResult(r)
-		completion.OnSuccess(&result)
-	}()
-}
-
 // CalculateSignature signs a message with the given private key.
 func CalculateSignature(signingKey ECPrivateKeyable, message []byte) [64]byte {
 	logger.Debug("Signing bytes with signing key")
@@ -116,17 +105,4 @@ func CalculateSignature(signingKey ECPrivateKeyable, message []byte) [64]byte {
 	// Sign the message.
 	signature := sign(&privateKey, message, random)
 	return *signature
-}
-
-// CalculateSignatureAsync signs a message with the given private key asyncronously.
-func CalculateSignatureAsync(signingKey ECPrivateKeyable, message []byte, completion complete.Completionable) {
-	go func() {
-		signature := CalculateSignature(signingKey, message)
-		if signature == [64]byte{} {
-			completion.OnFailure("Error calculating signature")
-			return
-		}
-		result := complete.NewResult(signature)
-		completion.OnSuccess(&result)
-	}()
 }
