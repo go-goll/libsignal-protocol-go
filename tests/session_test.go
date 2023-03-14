@@ -3,11 +3,11 @@ package tests
 import (
 	"testing"
 
-	"github.com/RadicalApp/libsignal-protocol-go/keys/prekey"
-	"github.com/RadicalApp/libsignal-protocol-go/logger"
-	"github.com/RadicalApp/libsignal-protocol-go/protocol"
-	"github.com/RadicalApp/libsignal-protocol-go/serialize"
-	"github.com/RadicalApp/libsignal-protocol-go/session"
+	"github.com/go-goll/libsignal-protocol-go/keys/prekey"
+	"github.com/go-goll/libsignal-protocol-go/logger"
+	"github.com/go-goll/libsignal-protocol-go/protocol"
+	"github.com/go-goll/libsignal-protocol-go/serialize"
+	"github.com/go-goll/libsignal-protocol-go/session"
 )
 
 // TestSessionBuilder checks building of a session.

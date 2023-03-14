@@ -1,9 +1,9 @@
 package record
 
 import (
-	"github.com/RadicalApp/libsignal-protocol-go/ecc"
-	"github.com/RadicalApp/libsignal-protocol-go/groups/ratchet"
-	"github.com/RadicalApp/libsignal-protocol-go/util/bytehelper"
+	"github.com/go-goll/libsignal-protocol-go/ecc"
+	"github.com/go-goll/libsignal-protocol-go/groups/ratchet"
+	"github.com/go-goll/libsignal-protocol-go/util/bytehelper"
 )
 
 const maxMessageKeys = 2000

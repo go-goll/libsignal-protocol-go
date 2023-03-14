@@ -7,21 +7,20 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
-
 	"syscall/js"
 
-	"github.com/RadicalApp/libsignal-protocol-go/ecc"
-	"github.com/RadicalApp/libsignal-protocol-go/groups"
-	"github.com/RadicalApp/libsignal-protocol-go/keys/identity"
-	"github.com/RadicalApp/libsignal-protocol-go/keys/prekey"
-	"github.com/RadicalApp/libsignal-protocol-go/logger"
-	"github.com/RadicalApp/libsignal-protocol-go/protocol"
-	"github.com/RadicalApp/libsignal-protocol-go/provision"
-	"github.com/RadicalApp/libsignal-protocol-go/serialize"
-	"github.com/RadicalApp/libsignal-protocol-go/session"
-	"github.com/RadicalApp/libsignal-protocol-go/util/bytehelper"
-	"github.com/RadicalApp/libsignal-protocol-go/util/keyhelper"
-	"github.com/RadicalApp/libsignal-protocol-go/util/optional"
+	"github.com/go-goll/libsignal-protocol-go/ecc"
+	"github.com/go-goll/libsignal-protocol-go/groups"
+	"github.com/go-goll/libsignal-protocol-go/keys/identity"
+	"github.com/go-goll/libsignal-protocol-go/keys/prekey"
+	"github.com/go-goll/libsignal-protocol-go/logger"
+	"github.com/go-goll/libsignal-protocol-go/protocol"
+	"github.com/go-goll/libsignal-protocol-go/provision"
+	"github.com/go-goll/libsignal-protocol-go/serialize"
+	"github.com/go-goll/libsignal-protocol-go/session"
+	"github.com/go-goll/libsignal-protocol-go/util/bytehelper"
+	"github.com/go-goll/libsignal-protocol-go/util/keyhelper"
+	"github.com/go-goll/libsignal-protocol-go/util/optional"
 )
 
 var serializer = serialize.NewProtoBufSerializer()

@@ -4,15 +4,15 @@ import (
 	"errors"
 	"strconv"
 
-	"github.com/RadicalApp/libsignal-protocol-go/cipher"
-	"github.com/RadicalApp/libsignal-protocol-go/ecc"
-	"github.com/RadicalApp/libsignal-protocol-go/keys/chain"
-	"github.com/RadicalApp/libsignal-protocol-go/keys/message"
-	"github.com/RadicalApp/libsignal-protocol-go/logger"
-	"github.com/RadicalApp/libsignal-protocol-go/protocol"
-	"github.com/RadicalApp/libsignal-protocol-go/state/record"
-	"github.com/RadicalApp/libsignal-protocol-go/state/store"
-	"github.com/RadicalApp/libsignal-protocol-go/util/bytehelper"
+	"github.com/go-goll/libsignal-protocol-go/cipher"
+	"github.com/go-goll/libsignal-protocol-go/ecc"
+	"github.com/go-goll/libsignal-protocol-go/keys/chain"
+	"github.com/go-goll/libsignal-protocol-go/keys/message"
+	"github.com/go-goll/libsignal-protocol-go/logger"
+	"github.com/go-goll/libsignal-protocol-go/protocol"
+	"github.com/go-goll/libsignal-protocol-go/state/record"
+	"github.com/go-goll/libsignal-protocol-go/state/store"
+	"github.com/go-goll/libsignal-protocol-go/util/bytehelper"
 )
 
 const maxFutureMessages = 2000

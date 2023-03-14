@@ -1,11 +1,11 @@
 package tests
 
 import (
-	groupRecord "github.com/RadicalApp/libsignal-protocol-go/groups/state/record"
-	"github.com/RadicalApp/libsignal-protocol-go/keys/identity"
-	"github.com/RadicalApp/libsignal-protocol-go/protocol"
-	"github.com/RadicalApp/libsignal-protocol-go/serialize"
-	"github.com/RadicalApp/libsignal-protocol-go/state/record"
+	groupRecord "github.com/go-goll/libsignal-protocol-go/groups/state/record"
+	"github.com/go-goll/libsignal-protocol-go/keys/identity"
+	"github.com/go-goll/libsignal-protocol-go/protocol"
+	"github.com/go-goll/libsignal-protocol-go/serialize"
+	"github.com/go-goll/libsignal-protocol-go/state/record"
 )
 
 // Define some in-memory stores for testing.
