@@ -7,25 +7,22 @@ import (
 )
 
 // NewDisplay will return a new displayable fingerprint.
-func NewDisplay(localFingerprint, remoteFingerprint []byte) *Display {
-	return &Display{
-		localFingerprintNumbers:  displayStringFor(localFingerprint),
-		remoteFingerprintNumbers: displayStringFor(remoteFingerprint),
-	}
+func NewDisplay() *Display {
+	return &Display{}
 }
 
 // Display is a structure for displayable fingerprints.
-type Display struct {
-	localFingerprintNumbers  string
-	remoteFingerprintNumbers string
-}
+type Display struct{}
 
-// DisplayText will return a string of the fingerprint numbers.
-func (d *Display) DisplayText() string {
-	if d.localFingerprintNumbers < d.remoteFingerprintNumbers {
-		return d.localFingerprintNumbers + d.remoteFingerprintNumbers
+// CreateFor create
+func (d *Display) CreateFor(localIdentityKey, remoteIdentityKey []byte) string {
+
+	localFingerprint := displayStringFor(localIdentityKey)
+	remoteFingerprint := displayStringFor(remoteIdentityKey)
+	if localFingerprint < remoteFingerprint {
+		return localFingerprint + remoteFingerprint
 	}
-	return d.remoteFingerprintNumbers + d.localFingerprintNumbers
+	return remoteFingerprint + localFingerprint
 }
 
 // displayStringFor will return a displayable string representation

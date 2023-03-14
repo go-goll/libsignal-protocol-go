@@ -1,6 +1,8 @@
 package tests
 
 import (
+	"encoding/base64"
+	"fmt"
 	"testing"
 
 	"github.com/go-goll/libsignal-protocol-go/keys/message"
@@ -58,12 +60,15 @@ func TestSavedMessageKeys(t *testing.T) {
 	}
 
 	logger.Info("Encrypted message: ", message)
-
+	//s,_ := serializer.SignalMessage.Deserialize([]byte{})
+	fmt.Println(base64.StdEncoding.EncodeToString(message.Serialize()))
+	m := "Myi4KQi5CjABEiEFSDUCTazKpFoSVMXqm9nIkkXo3pTltpYL82vYh6kda3QaIQVehbYcuwm6EXLul3cB2PntkZKc/rPdPu4ihnnezRzRWSJiMwohBZKteUS3bY10Uuu33d7hCLrKacPyTNiUkZh3MAP+SrcKEAAYACIw6FjTpha0p3OXBzvvfTNpZw3DqznGAj1FFG1sA4ZlMC/bK/OXPv3KTFpneRR4jdF3edtzAvG4s64="
+	msg, _ := base64.StdEncoding.DecodeString(m)
 	///////////// RECEIVER SESSION CREATION ///////////////
 
 	// Emulate receiving the message as JSON over the network.
 	logger.Debug("Building message from bytes on Bob's end.")
-	receivedMessage, err := protocol.NewPreKeySignalMessageFromBytes(message.Serialize(), serializer.PreKeySignalMessage, serializer.SignalMessage)
+	receivedMessage, err := protocol.NewPreKeySignalMessageFromBytes(msg, serializer.PreKeySignalMessage, serializer.SignalMessage)
 	if err != nil {
 		logger.Error("Unable to emulate receiving message as JSON: ", err)
 		t.FailNow()
